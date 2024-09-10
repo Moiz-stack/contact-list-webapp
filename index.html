@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <div class="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+        <h2 class="text-2xl font-bold mb-4">Add Contact</h2>
+        <div class="space-y-4">
+            <input type="text" id="name" placeholder="Name" class="w-full p-2 border border-gray-300 rounded-md" required>
+            <input type="text" id="mobile" placeholder="Mobile Number" class="w-full p-2 border border-gray-300 rounded-md" required>
+            <input type="email" id="email" placeholder="Email" class="w-full p-2 border border-gray-300 rounded-md" required>
+            <button id="actionButton" onclick="addOrUpdateContact()" class="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">Add Contact</button>
+        </div>
+    </div>
+
+    <div class="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+        <h2 class="text-2xl font-bold mb-4">Contact List</h2>
+
+        <!-- Search Bar -->
+        <input type="text" id="search" placeholder="Search Contacts..." onkeyup="searchContacts()" class="w-full p-2 border border-gray-300 rounded-md mb-4">
+
+        <!-- Sort Dropdown -->
+        <div class="flex items-center mb-4 space-x-2">
+            <label for="sort" class="font-semibold">Sort By:</label>
+            <select id="sort" onchange="sortContacts()" class="p-2 border border-gray-300 rounded-md bg-white">
+                <option value="none">Choose</option>
+                <option value="name">Name</option>
+                <option value="mobile">Mobile</option>
+                <option value="email">Email</option>
+            </select>
+        </div>
+
+        <!-- Contact Table -->
+        <table id="contactTable" class="w-full border-collapse bg-white shadow-lg rounded-lg">
+            <thead>
+                <tr class="bg-gray-200 border-b">
+                    <th class="py-2 px-4 text-left">Name</th>
+                    <th class="py-2 px-4 text-left">Mobile</th>
+                    <th class="py-2 px-4 text-left">Email</th>
+                    <th class="py-2 px-4 text-left">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example Row (Replace with dynamically added rows) -->
+                <tr class="border-b">
+                    <td class="py-2 px-4">John Doe</td>
+                    <td class="py-2 px-4">123-456-7890</td>
+                    <td class="py-2 px-4">john@example.com</td>
+                    <td class="py-2 px-4 flex space-x-2">
+                        <button onclick="editContact('1', 'John Doe', '123-456-7890', 'john@example.com')" class="py-1 px-3 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400">Edit</button>
+                        <button onclick="deleteContact('1')" class="py-1 px-3 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-400">Delete</button>
+                    </td>
+                </tr>
+                <!-- More rows will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
